@@ -82,4 +82,23 @@ def logout_page():
     flash('You are logged out successfully!', category='info')
     return redirect(url_for("home_page"))
 
+@app.route('/add', methods=['GET', 'POST'])
+@login_required
+def add():
+    if request.method == 'GET':
+        return render_template('add.html')
+        # return render_template(url_for("add"))
+
+    if request.method == 'POST':
+        name = (request.form['name'])
+        price = (request.form['price'])
+        barcode = (request.form['barcode'])
+        description = (request.form['description'])
+        item = Item(name=name, price=price, barcode=barcode, description=description)
+        db.session.add(item)
+        db.session.commit()
+        # return redirect('/market')
+        return redirect(url_for("market_page"))
+
+
 
