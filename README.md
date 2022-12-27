@@ -5,4 +5,4 @@ This is an Ecomm website that has features like user login and registeration wit
 ### Some preview screenshot of project...
 
 <h4>Home Page</h4>
-<img src="Screenshot (165).png">
+<img src="Screenshot (165).png" width=400px height=400px>
