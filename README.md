@@ -2,6 +2,8 @@
 
 <strong>This is an Ecomm website that has features like user login and registeration with validations and shows available items in market you can buy and sell items in this market.</strong>
 
+<strong>Hosted url:</strong> https://market-pi-nine.vercel.app
+
 ### Some preview screenshots of project...
 
 <h4>Home Page</h4>
