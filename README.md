@@ -2,7 +2,7 @@
 
 <strong>This is an Ecomm website that has features like user login and registeration with validations and shows available items in market you can buy and sell items in this market.</strong>
 
-<strong>Hosted url:</strong> https://market-pi-nine.vercel.app
+<strong>Hosted url:</strong> https://sasta-bazaar-08um.onrender.com
 
 ### Some preview screenshots of project...
 
