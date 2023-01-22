@@ -28,7 +28,8 @@
         {% for item in items %}
         {% include 'includes/items_modals.html' %}
             <tr>
-                <td>{{ item.id}}</td>
+                <th scope="row"> {{ loop.index }} </th>
+                <!-- <td>{{ item.id}}</td> -->
                 <td>{{ item.name}}</td>
                 <td>{{ item.barcode}}</td>
                 <td>Rs. {{ item.price}}</td>
