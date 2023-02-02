@@ -5,16 +5,19 @@ from markett.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemFor
 from markett import db
 from flask_login import login_user, logout_user, login_required, current_user
 
+# Home Page
 @app.route('/')
 @app.route('/home')
 def home_page():
     return render_template("home.html")
 
+# Market Page
 @app.route('/market', methods=['GET', 'POST'])
 @login_required
 def market_page():
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
+    # purchasing items from market
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(name=purchased_item).first()
@@ -24,7 +27,8 @@ def market_page():
                 flash(f"Congratulation! You have purchased {p_item_object.name} for Rs. {p_item_object.price}", category="success")
             else:
                 flash(f"Sorry! You don't have enough amount to buy {p_item_object.name}", category="danger")
-
+                
+        # selling items back to market
         sold_item = request.form.get('sold_item')
         s_item_object = Item.query.filter_by(name=sold_item).first()
         if s_item_object:
@@ -41,6 +45,7 @@ def market_page():
         owned_items = Item.query.filter_by(owner=current_user.id)
         return render_template("market.html", items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
+# registeration
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
@@ -62,6 +67,7 @@ def register_page():
             flash(f'There was an error with creating an user {err_msg}!', category='danger')
     return render_template('register.html', form=form)
 
+#Login
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     form = LoginForm()
@@ -76,12 +82,14 @@ def login_page():
 
     return render_template('login.html', form=form)
 
+# logout
 @app.route('/logout')
 def logout_page():
     logout_user()
     flash('You are logged out successfully!', category='info')
     return redirect(url_for("home_page"))
 
+# adding new item to market by any user
 @app.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
