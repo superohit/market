@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import Email, Length, EqualTo, DataRequired, ValidationError
 from markett.models import User
 
+# registration form and validation of user detail
 class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
         user = User.query.filter_by(username=username_to_check.data).first()
@@ -20,14 +21,17 @@ class RegisterForm(FlaskForm):
     password2 = PasswordField(label='Confirm Password:', validators=[EqualTo('password1'), DataRequired()])
     submit = SubmitField(label='Create Account')
 
+# login form and validation
 class LoginForm(FlaskForm):
     username = StringField(label='User Name:', validators=[DataRequired()])
     password = PasswordField(label='Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
 
+# purchasing item form
 class PurchaseItemForm(FlaskForm):
     submit = SubmitField(label='Buy Now')
-
+    
+# selling item form
 class SellItemForm(FlaskForm):
     submit = SubmitField(label='Sell Item!')
 
