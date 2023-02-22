@@ -19,4 +19,4 @@
 <img src="Screenshot (168).png" width=600px height=300px>
 
 <h4>Selling Item Page</h4>
-<img src="Screenshot (233).png" width=600px height=300px>
+<img src="Screenshot (2331).png" width=600px height=300px>
